@@ -36,8 +36,8 @@ const pkgNameFormatter = (packageName: string) => {
 
 export const checkUpdates = ({
   askToUpdate = true,
-  commandToInstall,
   dontAskCheckInterval = DAY_IN_MS,
+  isGlobal = true,
   packageJsonPath,
   updateCheckInterval = WEEK_IN_MS,
   updateQuestion = 'Heey! Before, do you want to get the latest version? 🔥',
@@ -53,6 +53,8 @@ export const checkUpdates = ({
   const { name: packageName, version: localVersion } = JSON.parse(
     readFileSync(packageJsonPath, 'utf8')
   ) as LocalNpmPackage;
+
+  const commandToInstall = isGlobal ? `npm i -g ${packageName}` : `npm i ${packageName}`;
 
   const updateOptions = {
     choices: [

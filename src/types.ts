@@ -11,8 +11,8 @@ export interface LocalNpmPackage {
 
 export interface AvailabilityProps {
   askToUpdate?: boolean;
-  commandToInstall: string;
   dontAskCheckInterval?: number;
+  isGlobal?: boolean;
   packageJsonPath: string;
   updateCheckInterval?: number;
   updateQuestion?: string;
