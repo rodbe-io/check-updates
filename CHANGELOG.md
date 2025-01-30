@@ -1,3 +1,10 @@
+## [1.3.0](https://github.com/rodbe-io/check-updates/compare/v1.2.0...v1.3.0) (2025-01-30)
+
+
+### Features
+
+* handling client and server errors ([6e52172](https://github.com/rodbe-io/check-updates/commit/6e52172291bfe018300df4f428cbbd954baa5cfd))
+
 ## [1.2.0](https://github.com/rodbe-io/check-updates/compare/v1.1.0...v1.2.0) (2025-01-30)
 
 
