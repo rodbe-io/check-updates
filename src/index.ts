@@ -12,7 +12,13 @@ import type { AvailabilityProps, LocalNpmPackage, RemoteNpmPackage } from './typ
 
 const getRemotePackageJson = async (packageName: string) => {
   const [err, response] = await to<RemoteNpmPackage>(
-    fetch(`https://registry.npmjs.org/${packageName}`).then(async res => res.json() as Promise<RemoteNpmPackage>)
+    fetch(`https://registry.npmjs.org/${packageName}`)
+      .then(async r => {
+        const { status, statusText } = r;
+
+        return r.ok ? r : Promise.reject(new Error(`HTTP Error Response: ${String(status)} ${statusText}`));
+      })
+      .then(async r => r.json() as Promise<RemoteNpmPackage>)
   );
 
   if (err) {
