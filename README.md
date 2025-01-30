@@ -47,6 +47,12 @@ await updateChecker.checkNewVersion();
 
   Determines if the package should be installed globally.
 
+- **debug** (`boolean`):
+
+  Default: `false`
+
+  Runs `npm -v` instead of installing the package. (useful for local testing of packages during development)
+
 - **dontAskCheckInterval** (`number`):
 
   Default: `24 * 60 * 60 * 1000 // 1 day in milliseconds`

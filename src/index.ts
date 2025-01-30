@@ -34,8 +34,21 @@ const pkgNameFormatter = (packageName: string) => {
     .replace(/[. ]+$/, '');
 };
 
+const getCommandToInstall = ({
+  debug,
+  isGlobal,
+  packageName,
+}: Pick<AvailabilityProps, 'debug' | 'isGlobal'> & { packageName: string }) => {
+  if (debug) {
+    return 'npm -v';
+  }
+
+  return isGlobal ? `npm i -g ${packageName}` : `npm i ${packageName}`;
+};
+
 export const checkUpdates = ({
   askToUpdate = true,
+  debug,
   dontAskCheckInterval = DAY_IN_MS,
   isGlobal = true,
   packageJsonPath,
@@ -53,8 +66,6 @@ export const checkUpdates = ({
   const { name: packageName, version: localVersion } = JSON.parse(
     readFileSync(packageJsonPath, 'utf8')
   ) as LocalNpmPackage;
-
-  const commandToInstall = isGlobal ? `npm i -g ${packageName}` : `npm i ${packageName}`;
 
   const updateOptions = {
     choices: [
@@ -86,7 +97,7 @@ export const checkUpdates = ({
   });
 
   const update = () => {
-    execSync(commandToInstall, {
+    execSync(getCommandToInstall({ debug, isGlobal, packageName }), {
       cwd: process.cwd(),
       stdio: [process.stdin, process.stdout, process.stderr],
     });
