@@ -8,7 +8,12 @@
       "path": "@commitlint/cz-commitlint"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "@inquirer/select": "^4.0.6",
+    "@rodbe/fn-utils": "^1.5.0",
+    "@rodbe/lru-cache-fs": "^1.1.2",
+    "node-fetch": "^3.3.2"
+  },
   "description": "Configurable update checker",
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",
