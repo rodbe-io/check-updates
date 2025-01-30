@@ -1,3 +1,10 @@
+## [1.2.0](https://github.com/rodbe-io/check-updates/compare/v1.1.0...v1.2.0) (2025-01-30)
+
+
+### Features
+
+* add debug parameter ([efe1435](https://github.com/rodbe-io/check-updates/commit/efe14353a8d6726d5b02cf8eae04b3a8b31f1b4c))
+
 ## [1.1.0](https://github.com/rodbe-io/check-updates/compare/v1.0.0...v1.1.0) (2025-01-30)
 
 
